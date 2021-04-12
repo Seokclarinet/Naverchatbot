@@ -1,0 +1,30 @@
+<h1> [붓꽃예측] </h1>
+
+<form action="/" method="post">
+
+
+<label >[입력]꽃받침 길이</label> </td>
+<input type="text" name="Sepal_length"> </td>
+
+
+		<label >[입력]꽃받침 너비</label> </td>
+		<input type="text" name="Sepal_width"> </td>
+
+
+
+	 <label >[입력]꽃잎 길이</label> </td>
+	<input type="text" name="Petal_length"> </td>
+
+
+	<label >[입력]꽃잎 너비</label> </td>
+	<input type="text" name="Petal_width"> </td>
+
+
+	<p> <button style="font-family: 'Nanum Barun Gothic' !important;" type="submit" >예측하기</button> </p>
+</form>
+
+
+<h2> [예측 결과]</h2>
+	{% if result %}
+	<h3 > {{ result }}</h3>
+    {% endif %}

@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<link rel="stylesheet" href="{{ url_for('static',filename='bootstrap.min.css')}}">
+
+<div class="container">
+    <h5 class="my-3 border-button pb-2">상품명</h5>
+    <form method="post" class="post-form my-3">
+        {{ form.csrf_token }}
+
+
+        {{ form.subject1.label }}
+        {{ form.subject1(class="form-control") }}
+
+
+
+        <button type="submit" class="btn btn-primary my-2">검색</button>
+    </form>
+</div>
+{% if shop_info_list %}
+<div class="container my-3">
+    <table class="table table-hover " style="font-size: 12px" >
+        <thead>
+            <tr class="text-center thead-dark">
+                <th style="width: 10%">번호</th>
+                <th style="width: 30%">상품명</th>
+                <th style="width: 15%">브랜드</th>
+                <th style="width: 15%">최저가</th>
+                <th style="width: 15%">최고가</th>
+                <th style="width: 15%">이미지</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for temp in shop_info_list %}
+        <tr class="text-center">
+             <td>{{ loop.index }}</td>
+             <td>{{ temp.title | safe }}</td>
+             <td>{{ temp.brand | safe  }}</td>
+             <td>{{ temp.lprice | safe }}</td>
+             <td>{{ temp.hprice | safe }}</td>
+             <td><img src={{ temp.image }} height="100" width="100" alt="제품이미지"></img></td>
+            <td><form action="{{ url_for('shopping.buy')}}" method="post" class="post-form my-3 ml-3">
+                <input type="hidden" name="title" value={{temp.title}}>
+                <input type="hidden" name="lprice" value={{temp.lprice}}>
+                <input type="submit" value="구매" class="btn btn-primary"></form></td>
+         </tr>
+
+        {% endfor %}
+        </tbody>
+    </table>
+
+</div>
+{% endif %}
+
+
+{% endblock %}

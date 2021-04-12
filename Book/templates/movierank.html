@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<link rel="stylesheet" href="{{ url_for('static',filename='bootstrap.min.css')}}">
+
+<div class="container">
+    <h5 class="my-3 border-button pb-2">영화순위 검색하기</h5>
+    <form method="post" class="post-form my-3">
+        {{ form.csrf_token }}
+
+
+        {{ form.subject.label }}
+        {{ form.subject(class="form-control") }}
+
+
+
+        <button type="submit" class="btn btn-primary my-2">검색</button>
+    </form>
+</div>
+{% if rank_list %}
+<div class="container my-3">
+    <table class="table table-hover " style="font-size: 12px" >
+        <thead>
+            <tr class="text-center thead-dark">
+                <th style="width: 10%">순위</th>
+                <th style="width: 90%">제목</th>
+
+            </tr>
+        </thead>
+        <tbody>
+        {% for temp in rank_list %}
+        <tr class="text-center">
+             <td>{{ loop.index }}</td>
+             <td>{{ temp | safe }}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endif %}
+
+
+{% endblock %}

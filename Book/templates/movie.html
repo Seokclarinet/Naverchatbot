@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<link rel="stylesheet" href="{{ url_for('static',filename='bootstrap.min.css')}}">
+
+<div class="container">
+    <h5 class="my-3 border-button pb-2">영화정보 검색하기</h5>
+    <form method="post" class="post-form my-3">
+        {{ form.csrf_token }}
+
+
+        {{ form.subject.label }}
+        {{ form.subject(class="form-control") }}
+
+
+
+        <button type="submit" class="btn btn-primary my-2">검색</button>
+    </form>
+</div>
+{% if book_info_list %}
+<div class="container my-3">
+    <table class="table table-hover " style="font-size: 12px" >
+        <thead>
+            <tr class="text-center thead-dark">
+                <th style="width: 10%">번호</th>
+                <th style="width: 30%">제목</th>
+                <th style="width: 15%">감독</th>
+                <th style="width: 20%">배우</th>
+                <th style="width: 15%">개봉년도</th>
+                <th style="width: 10%">평점</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for temp in book_info_list %}
+        <tr class="text-center">
+             <td>{{ loop.index }}</td>
+             <td>{{ temp.title | safe }}</td>
+             <td>{{ temp.director | safe | shortword }}</td>
+             <td>{{ temp.actor | safe | shortword }}</td>
+             <td>{{ temp.pubDate | safe }}</td>
+             <td>{{ temp.userRating | safe }}</td>
+         </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endif %}
+
+
+{% endblock %}
