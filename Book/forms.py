@@ -17,8 +17,12 @@ class RankForm(FlaskForm):
     subject = StringField('년월일(예:200303)', validators=[DataRequired()])
 
 class BuyForm(FlaskForm):
-    subject1 = StringField('상품명', validators=[DataRequired()])
+    subject = StringField('상품명', validators=[DataRequired()])
 
 class ShopbuyForm(FlaskForm):
+    name = StringField('이름', validators=[DataRequired()])
     content = TextAreaField('주소',validators=[DataRequired()])
 
+
+class HelpbotForm(FlaskForm):
+    subject = StringField('궁금한 기능을 입력해주세요.' , validators=[DataRequired()])

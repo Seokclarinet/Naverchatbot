@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
      <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.min.css') }}">
+
     <title>Book 입니다.</title>
 </head>
 <body>
@@ -29,6 +30,21 @@
             </li>
              <li class="nav-item ">
                 <a class="nav-link" href="{{url_for('shopping.buysearch')}}">상품 검색</a>
+            </li>
+             <li class="nav-item ">
+                <a class="nav-link" href="{{url_for('chatbot.chatbot')}}">책 챗봇</a>
+            </li>
+              <li class="nav-item ">
+                <a class="nav-link" href="{{url_for('moviechat.moviechat')}}">영화 챗봇</a>
+            </li>
+             <li class="nav-item ">
+                <a class="nav-link" href="{{url_for('weatherchat.weatherchat')}}">날씨 챗봇</a>
+            </li>
+             <li class="nav-item ">
+                <a class="nav-link" href="{{url_for('trotchat.trotchat')}}">미스터트롯 투표 챗봇</a>
+            </li>
+             <li class="nav-item ">
+                <a class="nav-link" href="{{url_for('helpbot.helpchat')}}">사이트 도우미</a>
             </li>
         </ul>
     </div>

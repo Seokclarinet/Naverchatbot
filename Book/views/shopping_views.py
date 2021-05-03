@@ -13,7 +13,7 @@ bp = bp = Blueprint('shopping', __name__, url_prefix='/shopping')
 def buysearch():
     form = BuyForm()
     if request.method == 'POST' and form.validate_on_submit():
-        result = Navershop(form.subject1.data)
+        result = Navershop(form.subject.data)
         result = json.loads(result)
         return render_template('shopping.html', shop_info_list=result['items'], form=form)
     return render_template('shopping.html', form=form)

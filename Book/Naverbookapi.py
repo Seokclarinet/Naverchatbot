@@ -20,3 +20,5 @@ def Naverbook(bookname):
         print("Error Code:" + rescode)
 
     return response_body.decode('utf-8')
+
+Naverbook('삼국지')

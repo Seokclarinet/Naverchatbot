@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<link rel="stylesheet" href="{{ url_for('static',filename='bootstrap.min.css')}}">
+
+<div class="container">
+
+    <h5 class="my-3 border-button pb-2">사이트 도우미</h5>
+    <form method="post" class="post-form my-3">
+        {{ form.csrf_token }}
+
+
+        {{ form.subject.label }}
+        {{ form.subject(class="form-control") }}
+
+
+
+        <button type="submit" class="btn btn-primary my-2">검색</button>
+    </form>
+</div>
+
+{% endblock %}
